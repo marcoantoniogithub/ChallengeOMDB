@@ -8,7 +8,6 @@
     <fragment
         android:id="@+id/ListFilmFragment"
         android:name="com.example.desafiomobile.ui.listFilm.ListFilmFragment"
-        android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_list_film">
 
         <action
@@ -18,7 +17,6 @@
     <fragment
         android:id="@+id/DetailsFilmFragment"
         android:name="com.example.desafiomobile.ui.detailsFilm.DetailsFilmFragment"
-        android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_details_film">
 
         <action
