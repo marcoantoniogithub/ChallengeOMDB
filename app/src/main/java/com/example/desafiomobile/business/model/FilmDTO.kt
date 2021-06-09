@@ -28,4 +28,4 @@ data class FilmDTO(
     @SerializedName("Website")val website :String,
     @SerializedName("Response")val response :String
 //    ArrayList < Object > Ratings = new ArrayList < Object > ();
-){}
+)

@@ -15,9 +15,9 @@ class OmdbRepository(
         return scheduler
     }
 
-    fun getAllFilm(title :String): Single<FilmDTO> {
-        return api.getFilmForTitle(title)
-            .subscribeOn(scheduler.io())
-            .observeOn(scheduler.ui())
-    }
+//    fun getAllFilm(title :String): Single<FilmDTO> {
+//        return api.getFilmForTitle(title)
+//            .subscribeOn(scheduler.io())
+//            .observeOn(scheduler.ui())
+//    }
 }

@@ -19,18 +19,17 @@ object ListFilmModuleModule {
         scope(named(LIST_FILM_SCOPE)) {
             viewModel {
                 ListFilmViewModel(
-                    repository = get()
                 )
             }
-            scoped {
-                OmdbRepository(
-                    scheduler= get(),
-                    api = get(named(NAMED_API))
-                )
-            }
-            scoped<OmdbApi>(named(NAMED_API)) {
-                 get<Retrofit>().newBuilder().build().create(OmdbApi::class.java)
-            }
+//            scoped {
+//                OmdbRepository(
+//                    scheduler= get(),
+//                    api = get(named(NAMED_API))
+//                )
+//            }
+//            scoped<OmdbApi>(named(NAMED_API)) {
+//                 get<Retrofit>().newBuilder().build().create(OmdbApi::class.java)
+//            }
         }
     }
 }
