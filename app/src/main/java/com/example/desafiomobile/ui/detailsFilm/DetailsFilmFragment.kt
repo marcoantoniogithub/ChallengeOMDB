@@ -6,6 +6,7 @@ import br.com.aaf.libraryCore.base.BaseFragment
 import com.example.desafiomobile.R
 import com.example.desafiomobile.databinding.FragmentDetailsFilmBinding
 import com.example.desafiomobile.ui.detailsFilm.viewModel.DetailsFilmViewModel
+import com.squareup.picasso.Picasso
 
 class DetailsFilmFragment : BaseFragment<FragmentDetailsFilmBinding>() {
 
@@ -29,10 +30,15 @@ class DetailsFilmFragment : BaseFragment<FragmentDetailsFilmBinding>() {
 
     override fun observers() {
         viewModel.dto.observe( viewLifecycleOwner) {
+            Picasso.get()
+                .load(it.poster)
+                .into(binding.imgId);
+
             binding.title.text = it.title
             binding.year.text = it.year
-            binding.genre.text = it.genre
             binding.runtime.text = it.runtime
+            binding.genre.text = it.genre
+            binding.plot.text = it.plot
         }
     }
 }

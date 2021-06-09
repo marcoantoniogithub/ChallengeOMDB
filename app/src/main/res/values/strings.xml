@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">DesafioMobile</string>
     <string name="back">Back</string>
-    <string name="ano">Ano:</string>
+
+    <string name="year">Year:</string>
+    <string name="runtime">Runtime:</string>
+    <string name="genre">Genre:</string>
+    <string name="plot">Plot</string>
 </resources>

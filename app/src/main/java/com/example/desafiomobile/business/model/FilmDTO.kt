@@ -26,6 +26,12 @@ data class FilmDTO(
     @SerializedName("BoxOffice")val boxOffice :String,
     @SerializedName("Production")val production :String,
     @SerializedName("Website")val website :String,
-    @SerializedName("Response")val response :String
-//    ArrayList < Object > Ratings = new ArrayList < Object > ();
+    @SerializedName("Response")val response :String,
+    @SerializedName("Ratings")val ratings: Rating
 )
+
+data class Rating(
+    @SerializedName("Source")val source: String,
+    @SerializedName("Value")val value: String
+)
+
