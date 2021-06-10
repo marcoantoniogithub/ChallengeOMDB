@@ -4,6 +4,7 @@ import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.MutableLiveData
 import br.com.aaf.libraryCore.base.BaseViewModel
 import com.example.desafiomobile.business.model.FilmDTO
+import com.example.desafiomobile.business.model.FilmDetailsDTO
 import com.example.desafiomobile.business.repository.OmdbApi
 import retrofit2.Call
 import retrofit2.Callback
@@ -13,7 +14,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class DetailsFilmViewModel : BaseViewModel(), LifecycleObserver {
 
-    var dto: MutableLiveData<FilmDTO> = MutableLiveData()
+    var dto: MutableLiveData<FilmDetailsDTO> = MutableLiveData()
 
     init {
         val retrofitClient = Retrofit.Builder()
@@ -22,11 +23,11 @@ class DetailsFilmViewModel : BaseViewModel(), LifecycleObserver {
             .build()
 
         val endpoint = retrofitClient.create(OmdbApi::class.java)
-        endpoint.getFilmForTitle("a").enqueue(object: Callback<FilmDTO> {
-            override fun onResponse(call: Call<FilmDTO>, response: Response<FilmDTO>) {
+        endpoint.getFilmForId("a").enqueue(object: Callback<FilmDetailsDTO> {
+            override fun onResponse(call: Call<FilmDetailsDTO>, response: Response<FilmDetailsDTO>) {
                 dto.postValue(response.body())
             }
-            override fun onFailure(call: Call<FilmDTO>, t: Throwable) {
+            override fun onFailure(call: Call<FilmDetailsDTO>, t: Throwable) {
                 println(t)
             }
         })

@@ -1,6 +1,6 @@
 package br.com.aaf.libraryCore.base
 
-abstract class BaseRepository {
+abstract class aseRepository {
 
     abstract fun getScheduler(): BaseSchedulerProvider
 }
