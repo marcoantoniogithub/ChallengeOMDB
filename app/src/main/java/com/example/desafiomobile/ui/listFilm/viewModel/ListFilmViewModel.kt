@@ -16,10 +16,9 @@ class ListFilmViewModel() : BaseViewModel(), LifecycleObserver {
     var films: MutableLiveData<FilmDTO> = MutableLiveData()
 
     init {
-        getFilms("STA", 2)
     }
 
-    fun getFilms(title: String, pag: Int) {
+    fun getAllFilms() {
 
         val retrofitClient = Retrofit.Builder()
             .baseUrl("http://www.omdbapi.com/")
@@ -27,7 +26,7 @@ class ListFilmViewModel() : BaseViewModel(), LifecycleObserver {
             .build()
 
         val endpoint = retrofitClient.create(OmdbApi::class.java)
-        endpoint.getFilmForTitle(title, pag).enqueue(object : Callback<FilmDTO> {
+        endpoint.getFilmForTitle("Sta", 1).enqueue(object : Callback<FilmDTO> {
             override fun onResponse(call: Call<FilmDTO>, response: Response<FilmDTO>) {
                 films.postValue(response.body())
             }

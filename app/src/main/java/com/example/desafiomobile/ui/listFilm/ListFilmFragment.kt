@@ -6,7 +6,6 @@ import br.com.aaf.libraryCore.base.BaseFragment
 import com.example.desafiomobile.R
 import com.example.desafiomobile.databinding.FragmentListFilmBinding
 import com.example.desafiomobile.ui.listFilm.adapter.ListAdapter
-import com.example.desafiomobile.ui.listFilm.adapter.listener.OnItemClickListener
 import com.example.desafiomobile.ui.listFilm.viewModel.ListFilmViewModel
 
 class ListFilmFragment : BaseFragment<FragmentListFilmBinding>() {
@@ -39,11 +38,11 @@ class ListFilmFragment : BaseFragment<FragmentListFilmBinding>() {
         viewModel.films.observe(viewLifecycleOwner) {
             adapter = ListAdapter(it)
             films?.setAdapter(adapter)
-    //            adapter.setOnItemClickListener(object : OnItemClickListener() {
-    //                fun onItemClick(nota: Nota?, posicao: Int) {
-    //                    vaiParaFormularioNotaActivityAltera(nota, posicao)
-    //                }
-    //            })
+            //            adapter.setOnItemClickListener(object : OnItemClickListener() {
+            //                fun onItemClick(nota: Nota?, posicao: Int) {
+            //                    vaiParaFormularioNotaActivityAltera(nota, posicao)
+            //                }
+            //            })
         }
     }
 
