@@ -1,7 +1,10 @@
 package com.example.desafiomobile.ui.listFilm
 
+import android.content.Context
+import android.widget.Toast
 import androidx.lifecycle.observe
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import br.com.aaf.libraryCore.base.BaseFragment
 import com.example.desafiomobile.R
 import com.example.desafiomobile.business.model.SimpleFilm
@@ -30,10 +33,6 @@ class ListFilmFragment : BaseFragment<FragmentListFilmBinding>() {
         }
 
         binding.listaNotasRecycleview.adapter = filmsAdapter
-
-//        binding.buttonFirst.setOnClickListener {
-//            view?.findNavController()?.navigate(R.id.action_FirstFragment_to_SecondFragment)
-//        }
     }
 
     private fun navigationForDetails(
@@ -41,7 +40,6 @@ class ListFilmFragment : BaseFragment<FragmentListFilmBinding>() {
         position: Int
     ) {
         val action = ListFilmFragmentDirections.actionFirstFragmentToSecondFragment(model.id)
-//        view?.findNavController()?.navigate(R.id.action_FirstFragment_to_SecondFragment(model.id))
         view?.findNavController()?.navigate(action)
     }
 
@@ -57,6 +55,10 @@ class ListFilmFragment : BaseFragment<FragmentListFilmBinding>() {
     override fun observers() {
         viewModel.films.observe(viewLifecycleOwner) {
             filmsAdapter.updateList(it.search)
+        }
+
+        viewModel.msg.observe(viewLifecycleOwner) {
+            Toast.makeText(context, it, Toast.LENGTH_LONG).show()
         }
     }
 

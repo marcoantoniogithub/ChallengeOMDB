@@ -43,10 +43,11 @@ class ListAdapter(
         private var id: String = "0"
 
         fun binding(filmsItem: SimpleFilm, onItemClickListener: () -> Unit) {
-            title.text = filmsItem.title
+            title.text = if (filmsItem.title.length < 13) filmsItem.title else filmsItem.title.substring(0, 10) + "..."
             year.text = filmsItem.year
             Picasso.get()
                 .load(filmsItem.poster)
+                .error(R.drawable.ic_baseline_image_not_supported_24)
                 .into(img)
             id = filmsItem.id
             card.setOnClickListener {

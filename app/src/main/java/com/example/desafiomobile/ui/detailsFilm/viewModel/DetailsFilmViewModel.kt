@@ -27,6 +27,8 @@ class DetailsFilmViewModel : BaseViewModel(), LifecycleObserver {
             .build()
 
         val endpoint = retrofitClient.create(OmdbApi::class.java)
+
+        println(endpoint)
         endpoint.getFilmForId(id).enqueue(object: Callback<FilmDetailsDTO> {
             override fun onResponse(call: Call<FilmDetailsDTO>, response: Response<FilmDetailsDTO>) {
                 dto.postValue(response.body())

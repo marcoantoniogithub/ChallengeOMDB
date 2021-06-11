@@ -37,12 +37,14 @@ class DetailsFilmFragment : BaseFragment<FragmentDetailsFilmBinding>() {
         viewModel.dto.observe( viewLifecycleOwner) {
             Picasso.get()
                 .load(it.poster)
+                .error(R.drawable.ic_baseline_image_not_supported_24)
                 .into(binding.imgId);
 
             binding.title.text = it.title
             binding.year.text = it.year
-            binding.runtime.text = it.runtime
+            binding.released.text = it.released
             binding.genre.text = it.genre
+            binding.rating.text = if(it.ratings.size>0)it.ratings[0].value else "Not Found"
             binding.plot.text = it.plot
         }
     }

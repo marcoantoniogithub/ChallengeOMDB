@@ -3,9 +3,10 @@
     <string name="back">Back</string>
 
     <string name="year">Year:</string>
-    <string name="runtime">Runtime:</string>
+    <string name="released">Released:</string>
     <string name="genre">Genre:</string>
     <string name="plot">Plot</string>
     <string name="search">Search</string>
     <string name="title">Title</string>
+    <string name="rating">Rating:</string>
 </resources>

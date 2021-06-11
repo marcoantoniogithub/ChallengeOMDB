@@ -27,7 +27,7 @@ data class FilmDetailsDTO(
     @SerializedName("Production") val production: String,
     @SerializedName("Website") val website: String,
     @SerializedName("Response") val response: String,
-    @SerializedName("Ratings") val ratings: Rating
+    @SerializedName("Ratings") val ratings: List<Rating>
 )
 
 data class Rating(

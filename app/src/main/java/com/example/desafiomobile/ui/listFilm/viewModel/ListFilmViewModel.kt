@@ -14,6 +14,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 class ListFilmViewModel() : BaseViewModel(), LifecycleObserver {
 
     var films: MutableLiveData<FilmDTO> = MutableLiveData()
+    var textTitle: MutableLiveData<String> = MutableLiveData()
+    var msg: MutableLiveData<String> = MutableLiveData()
 
     init {
     }
@@ -25,9 +27,13 @@ class ListFilmViewModel() : BaseViewModel(), LifecycleObserver {
             .build()
 
         val endpoint = retrofitClient.create(OmdbApi::class.java)
-        endpoint.getFilmForTitle("Sta", 1).enqueue(object : Callback<FilmDTO> {
+        endpoint.getFilmForTitle(textTitle.value?:"", 1).enqueue(object : Callback<FilmDTO> {
             override fun onResponse(call: Call<FilmDTO>, response: Response<FilmDTO>) {
-                films.postValue(response.body())
+                if(response.body()?.search == null){
+                    msg.postValue("Nâo foi Encontrado")
+                } else {
+                    films.postValue(response.body())
+                }
             }
 
             override fun onFailure(call: Call<FilmDTO>, t: Throwable) {
