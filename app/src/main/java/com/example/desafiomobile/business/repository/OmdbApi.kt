@@ -10,7 +10,7 @@ import retrofit2.http.Query
 
 interface OmdbApi {
         @GET("?apikey=6931e6f5")
-        fun getFilmForId(@Query("t") title: String): Call<FilmDetailsDTO>
+        fun getFilmForId(@Query("i") id: String): Call<FilmDetailsDTO>
 
         @GET("?apikey=6931e6f5")
         fun getFilmForTitle(@Query("s") title: String, @Query("page") page: Int): Call<FilmDTO>

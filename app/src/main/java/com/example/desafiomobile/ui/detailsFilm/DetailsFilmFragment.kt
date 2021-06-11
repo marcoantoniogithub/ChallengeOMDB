@@ -2,6 +2,7 @@ package com.example.desafiomobile.ui.detailsFilm
 
 import androidx.lifecycle.observe
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
 import br.com.aaf.libraryCore.base.BaseFragment
 import com.example.desafiomobile.R
 import com.example.desafiomobile.databinding.FragmentDetailsFilmBinding
@@ -9,6 +10,8 @@ import com.example.desafiomobile.ui.detailsFilm.viewModel.DetailsFilmViewModel
 import com.squareup.picasso.Picasso
 
 class DetailsFilmFragment : BaseFragment<FragmentDetailsFilmBinding>() {
+
+    val args: DetailsFilmFragmentArgs by navArgs()
 
     private val viewModel: DetailsFilmViewModel = DetailsFilmViewModel()
 
@@ -22,6 +25,8 @@ class DetailsFilmFragment : BaseFragment<FragmentDetailsFilmBinding>() {
         binding.buttonBack.setOnClickListener {
             view?.findNavController()?.navigate(R.id.action_SecondFragment_to_FirstFragment)
         }
+
+        viewModel.getDetailsFilm(args.id)
     }
 
     override fun onDestroy() {

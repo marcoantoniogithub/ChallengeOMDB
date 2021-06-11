@@ -19,7 +19,6 @@ class ListFilmViewModel() : BaseViewModel(), LifecycleObserver {
     }
 
     fun getAllFilms() {
-
         val retrofitClient = Retrofit.Builder()
             .baseUrl("http://www.omdbapi.com/")
             .addConverterFactory(GsonConverterFactory.create())

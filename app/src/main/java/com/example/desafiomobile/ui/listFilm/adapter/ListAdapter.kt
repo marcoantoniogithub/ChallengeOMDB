@@ -3,42 +3,55 @@ package com.example.desafiomobile.ui.listFilm.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.desafiomobile.R
-import com.example.desafiomobile.business.model.FilmDTO
-import com.example.desafiomobile.business.model.simpleFilm
+import com.example.desafiomobile.business.model.SimpleFilm
+import com.google.android.material.card.MaterialCardView
+import com.squareup.picasso.Picasso
 
-class ListAdapter(private val films: FilmDTO) :
+class ListAdapter(
+    private var films: MutableList<SimpleFilm>,
+    private val listener: ((SimpleFilm, position: Int) -> Unit)
+) :
     RecyclerView.Adapter<ListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        val view: View =
+        return ViewHolder(
             LayoutInflater.from(viewGroup.context).inflate(R.layout.item_list, viewGroup, false)
-        return ViewHolder(view)
+        )
     }
 
-    override fun getItemCount() = films.films.size
+    override fun getItemCount(): Int = films.size
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        viewHolder.film = films.films.get(position)
-        viewHolder.binding()
+        val filmModel = films[position]
+        viewHolder.binding(filmModel) { listener(filmModel, position) }
+    }
+
+    fun updateList(list: List<SimpleFilm>) {
+        films = list.toMutableList()
+        notifyDataSetChanged()
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        private val title: TextView = view.findViewById(R.id.card_title)
+        private val year: TextView = view.findViewById(R.id.card_year)
+        private val img: ImageView = view.findViewById(R.id.card_img)
+        private val card: MaterialCardView = view.findViewById(R.id.card)
+        private var id: String = "0"
 
-        var film: simpleFilm? = null
-        var title: TextView? = null
-        var year: TextView? = null
-        var id: TextView? = null
-        var poster: TextView? = null
-
-        init {
-            title = view.findViewById(R.id.simple_text)
-        }
-
-        fun binding() {
-            title?.text = film?.title
+        fun binding(filmsItem: SimpleFilm, onItemClickListener: () -> Unit) {
+            title.text = filmsItem.title
+            year.text = filmsItem.year
+            Picasso.get()
+                .load(filmsItem.poster)
+                .into(img)
+            id = filmsItem.id
+            card.setOnClickListener {
+                onItemClickListener.invoke()
+            }
         }
     }
 }

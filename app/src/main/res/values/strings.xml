@@ -6,5 +6,6 @@
     <string name="runtime">Runtime:</string>
     <string name="genre">Genre:</string>
     <string name="plot">Plot</string>
-    <string name="titulo">Titulo</string>
+    <string name="search">Search</string>
+    <string name="title">Title</string>
 </resources>

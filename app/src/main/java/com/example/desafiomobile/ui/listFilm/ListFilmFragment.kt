@@ -1,19 +1,19 @@
 package com.example.desafiomobile.ui.listFilm
 
 import androidx.lifecycle.observe
-import androidx.recyclerview.widget.RecyclerView
+import androidx.navigation.findNavController
 import br.com.aaf.libraryCore.base.BaseFragment
 import com.example.desafiomobile.R
+import com.example.desafiomobile.business.model.SimpleFilm
 import com.example.desafiomobile.databinding.FragmentListFilmBinding
+import com.example.desafiomobile.ui.detailsFilm.DetailsFilmFragmentDirections
 import com.example.desafiomobile.ui.listFilm.adapter.ListAdapter
 import com.example.desafiomobile.ui.listFilm.viewModel.ListFilmViewModel
 
 class ListFilmFragment : BaseFragment<FragmentListFilmBinding>() {
 
     private val viewModel: ListFilmViewModel = ListFilmViewModel()
-
-    private var adapter: ListAdapter? = null
-    var films: RecyclerView? = null
+    private lateinit var filmsAdapter: ListAdapter
 
     override fun getLayout() = R.layout.fragment_list_film
     override fun getViewModel() = viewModel
@@ -22,13 +22,33 @@ class ListFilmFragment : BaseFragment<FragmentListFilmBinding>() {
         binding.viewModel = viewModel
         this.lifecycle.addObserver(viewModel)
 
-        films = binding.listaNotasRecycleview
+        val items = mutableListOf<SimpleFilm>()
+        filmsAdapter = ListAdapter(items) { filmModel: SimpleFilm, i: Int ->
+            navigationForDetails(filmModel, i)
+        }.also {
+            filmsAdapter = it
+        }
+
+        binding.listaNotasRecycleview.adapter = filmsAdapter
 
 //        binding.buttonFirst.setOnClickListener {
 //            view?.findNavController()?.navigate(R.id.action_FirstFragment_to_SecondFragment)
 //        }
     }
 
+    private fun navigationForDetails(
+        model: SimpleFilm,
+        position: Int
+    ) {
+        val action = ListFilmFragmentDirections.actionFirstFragmentToSecondFragment(model.id)
+//        view?.findNavController()?.navigate(R.id.action_FirstFragment_to_SecondFragment(model.id))
+        view?.findNavController()?.navigate(action)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        filmsAdapter.notifyDataSetChanged()
+    }
 
     override fun onDestroy() {
         super.onDestroy()
@@ -36,13 +56,7 @@ class ListFilmFragment : BaseFragment<FragmentListFilmBinding>() {
 
     override fun observers() {
         viewModel.films.observe(viewLifecycleOwner) {
-            adapter = ListAdapter(it)
-            films?.setAdapter(adapter)
-            //            adapter.setOnItemClickListener(object : OnItemClickListener() {
-            //                fun onItemClick(nota: Nota?, posicao: Int) {
-            //                    vaiParaFormularioNotaActivityAltera(nota, posicao)
-            //                }
-            //            })
+            filmsAdapter.updateList(it.search)
         }
     }
 

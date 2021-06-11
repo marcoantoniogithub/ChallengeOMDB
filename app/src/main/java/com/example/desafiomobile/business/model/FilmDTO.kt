@@ -3,12 +3,12 @@ package com.example.desafiomobile.business.model
 import com.google.gson.annotations.SerializedName
 
 data class FilmDTO(
-    @SerializedName("Search") val films: List<simpleFilm>,
+    @SerializedName("Search") val search: List<SimpleFilm>,
     @SerializedName("totalResults") val totalResults: String,
     @SerializedName("Response") val response: String
 )
 
-data class simpleFilm(
+data class SimpleFilm(
     @SerializedName("Title") val title: String,
     @SerializedName("Year") val year: String,
     @SerializedName("imdbID") val id: String,

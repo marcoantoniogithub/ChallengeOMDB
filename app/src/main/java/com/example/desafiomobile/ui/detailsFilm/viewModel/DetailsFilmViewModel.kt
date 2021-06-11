@@ -17,13 +17,17 @@ class DetailsFilmViewModel : BaseViewModel(), LifecycleObserver {
     var dto: MutableLiveData<FilmDetailsDTO> = MutableLiveData()
 
     init {
+
+    }
+
+    fun getDetailsFilm(id :String){
         val retrofitClient = Retrofit.Builder()
             .baseUrl("http://www.omdbapi.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
         val endpoint = retrofitClient.create(OmdbApi::class.java)
-        endpoint.getFilmForId("a").enqueue(object: Callback<FilmDetailsDTO> {
+        endpoint.getFilmForId(id).enqueue(object: Callback<FilmDetailsDTO> {
             override fun onResponse(call: Call<FilmDetailsDTO>, response: Response<FilmDetailsDTO>) {
                 dto.postValue(response.body())
             }
