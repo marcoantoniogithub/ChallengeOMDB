@@ -1,17 +1,18 @@
 package com.example.desafiomobile.ui.listFilm
 
-import android.content.Context
+import android.app.Activity
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.lifecycle.observe
 import androidx.navigation.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
 import br.com.aaf.libraryCore.base.BaseFragment
 import com.example.desafiomobile.R
 import com.example.desafiomobile.business.model.SimpleFilm
 import com.example.desafiomobile.databinding.FragmentListFilmBinding
-import com.example.desafiomobile.ui.detailsFilm.DetailsFilmFragmentDirections
 import com.example.desafiomobile.ui.listFilm.adapter.ListAdapter
 import com.example.desafiomobile.ui.listFilm.viewModel.ListFilmViewModel
+
 
 class ListFilmFragment : BaseFragment<FragmentListFilmBinding>() {
 
@@ -57,8 +58,20 @@ class ListFilmFragment : BaseFragment<FragmentListFilmBinding>() {
             filmsAdapter.updateList(it.search)
         }
 
-        viewModel.msg.observe(viewLifecycleOwner) {
+        viewModel.msgError.observe(viewLifecycleOwner) {
             Toast.makeText(context, it, Toast.LENGTH_LONG).show()
+        }
+
+        viewModel.closeKeyBoard.observe(viewLifecycleOwner) {
+            activity?.let {
+                val imm: InputMethodManager =
+                    it.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+                var view: View? = it.currentFocus
+                if (view == null) {
+                    view = View(activity)
+                }
+                imm.hideSoftInputFromWindow(view.getWindowToken(), 0)
+            }
         }
     }
 

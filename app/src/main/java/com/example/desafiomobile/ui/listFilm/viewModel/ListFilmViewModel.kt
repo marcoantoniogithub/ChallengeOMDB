@@ -15,22 +15,24 @@ class ListFilmViewModel() : BaseViewModel(), LifecycleObserver {
 
     var films: MutableLiveData<FilmDTO> = MutableLiveData()
     var textTitle: MutableLiveData<String> = MutableLiveData()
-    var msg: MutableLiveData<String> = MutableLiveData()
+    var msgError: MutableLiveData<String> = MutableLiveData()
+    var closeKeyBoard: MutableLiveData<Boolean> = MutableLiveData()
 
     init {
     }
 
     fun getAllFilms() {
+        closeKeyBoard.postValue(false)
         val retrofitClient = Retrofit.Builder()
             .baseUrl("http://www.omdbapi.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
         val endpoint = retrofitClient.create(OmdbApi::class.java)
-        endpoint.getFilmForTitle(textTitle.value?:"", 1).enqueue(object : Callback<FilmDTO> {
+        endpoint.getFilmForTitle(textTitle.value ?: "", 1).enqueue(object : Callback<FilmDTO> {
             override fun onResponse(call: Call<FilmDTO>, response: Response<FilmDTO>) {
-                if(response.body()?.search == null){
-                    msg.postValue("Nâo foi Encontrado")
+                if (response.body()?.search == null) {
+                    msgError.postValue("Nâo foi Encontrado")
                 } else {
                     films.postValue(response.body())
                 }
