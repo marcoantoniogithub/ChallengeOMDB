@@ -10,7 +10,7 @@ import br.com.aaf.libraryCore.base.BaseFragment
 import com.example.desafiomobile.R
 import com.example.desafiomobile.business.model.SimpleFilm
 import com.example.desafiomobile.databinding.FragmentListFilmBinding
-import com.example.desafiomobile.ui.listFilm.adapter.ListAdapter
+import com.example.desafiomobile.util.adapter.ListAdapter
 import com.example.desafiomobile.ui.listFilm.viewModel.ListFilmViewModel
 
 
@@ -33,14 +33,14 @@ class ListFilmFragment : BaseFragment<FragmentListFilmBinding>() {
             filmsAdapter = it
         }
 
-        binding.listaNotasRecycleview.adapter = filmsAdapter
+        binding.listFilmRecycleview.adapter = filmsAdapter
     }
 
     private fun navigationForDetails(
         model: SimpleFilm,
         position: Int
     ) {
-        val action = ListFilmFragmentDirections.actionFirstFragmentToSecondFragment(model.id)
+        val action = ListFilmFragmentDirections.actionListFilmToDetailsFilm(model.id)
         view?.findNavController()?.navigate(action)
     }
 

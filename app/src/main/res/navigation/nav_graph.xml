@@ -3,7 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/ListFilmFragment">
+    app:startDestination="@id/FavoriteFilmFragment">
+
+    <fragment
+        android:id="@+id/FavoriteFilmFragment"
+        android:name="com.example.desafiomobile.ui.favoriteFilm.FavoriteFilmFragment"
+        tools:layout="@layout/fragment_favorite_film">
+
+        <action
+            android:id="@+id/action_favorite_film_to_details_film"
+            app:destination="@id/DetailsFilmFragment" />
+
+        <action
+            android:id="@+id/action_favorite_film_to_list_film"
+            app:destination="@id/DetailsFilmFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/ListFilmFragment"
@@ -11,9 +25,10 @@
         tools:layout="@layout/fragment_list_film">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
+            android:id="@+id/action_list_film_to_details_film"
             app:destination="@id/DetailsFilmFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/DetailsFilmFragment"
         android:name="com.example.desafiomobile.ui.detailsFilm.DetailsFilmFragment"
@@ -23,7 +38,7 @@
             app:argType="string"/>
 
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
+            android:id="@+id/action_details_film_to_list_film"
             app:destination="@id/ListFilmFragment" />
     </fragment>
 </navigation>

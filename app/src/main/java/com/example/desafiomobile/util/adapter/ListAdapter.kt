@@ -1,4 +1,4 @@
-package com.example.desafiomobile.ui.listFilm.adapter
+package com.example.desafiomobile.util.adapter
 
 import android.view.LayoutInflater
 import android.view.View

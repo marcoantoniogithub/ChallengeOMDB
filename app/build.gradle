@@ -16,6 +16,15 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += [
+                        "room.schemaLocation":"$projectDir/schemas".toString(),
+                        "room.incremental":"true",
+                        "room.expandProjection":"true"]
+            }
+        }
     }
 
     buildTypes {
@@ -25,15 +34,15 @@ android {
         }
     }
 
-    flavorDimensions "version"
-    productFlavors {
-        dev {
-            buildConfigField "String", "BASE_URL", "\"http://www.omdbapi.com/?apikey=6931e6f5&\""
-        }
-        prod {
-            buildConfigField "String", "BASE_URL", "\"http://www.omdbapi.com/?apikey=6931e6f5&\""
-        }
-    }
+//    flavorDimensions "version"
+//    productFlavors {
+//        dev {
+//            buildConfigField "String", "BASE_URL", "\"http://www.omdbapi.com/?apikey=6931e6f5&\""
+//        }
+//        prod {
+//            buildConfigField "String", "BASE_URL", "\"http://www.omdbapi.com/?apikey=6931e6f5&\""
+//        }
+//    }
 
     dataBinding {
         enabled = true
@@ -54,6 +63,8 @@ repositories {
 }
 
 dependencies {
+//    def koin_version = "2.2.1"
+    def room_version = "2.2.1"
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.5.0'
@@ -63,29 +74,38 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
     // Arch
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+
     //Retrofit 2
     implementation 'com.squareup.retrofit2:retrofit:2.6.2'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.6.1'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
     implementation 'com.google.code.gson:gson:2.8.6'
+
     // Reactive
     implementation 'io.reactivex.rxjava2:rxjava:2.2.9'
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
     implementation 'io.reactivex.rxjava2:rxkotlin:2.4.0'
+
     //koin
-    def koin_version = "2.2.1"
-    implementation "org.koin:koin-android:$koin_version"
-    implementation "org.koin:koin-androidx-scope:$koin_version"
-    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+//    implementation "org.koin:koin-android:$koin_version"
+//    implementation "org.koin:koin-androidx-scope:$koin_version"
+//    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+
     //Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:2.3.5"
     implementation "androidx.navigation:navigation-ui-ktx:2.3.5"
 
     //Picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
+
+    //Room
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-rxjava2:$room_version"
 }

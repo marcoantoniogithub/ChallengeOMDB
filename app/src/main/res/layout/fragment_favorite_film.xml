@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.desafiomobile.ui.listFilm.viewModel.ListFilmViewModel" />
+            type="com.example.desafiomobile.ui.favoriteFilm.viewModel.FavoriteFilmViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,32 +17,22 @@
         android:layout_height="match_parent">
 
         <EditText
-            android:id="@+id/search"
+            android:id="@+id/title_list_favorite"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_medium"
             android:padding="10dp"
-            android:text="@={viewModel.textTitle}"
+            android:text="@string/lista_de_filmes"
+            android:gravity="center"
             android:textColor="@android:color/darker_gray"
             android:textSize="20sp"
-            app:layout_constraintEnd_toStartOf="@id/btn_search"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/btn_search"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_medium"
-            android:onClick="@{() -> viewModel.getAllFilms()}"
-            android:text="@string/search"
-            app:layout_constraintBottom_toBottomOf="@id/search"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/search"
-            app:layout_constraintTop_toTopOf="@id/search" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/list_film_favorite_recycleview" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/list_film_recycleview"
+            android:id="@+id/list_film_favorite_recycleview"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
@@ -50,7 +40,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/search"
+            app:layout_constraintTop_toBottomOf="@id/title_list_favorite"
             tools:listitem="@layout/item_list" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

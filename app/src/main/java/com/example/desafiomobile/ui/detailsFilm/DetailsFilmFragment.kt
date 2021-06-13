@@ -23,7 +23,7 @@ class DetailsFilmFragment : BaseFragment<FragmentDetailsFilmBinding>() {
         this.lifecycle.addObserver(viewModel)
 
         binding.buttonBack.setOnClickListener {
-            view?.findNavController()?.navigate(R.id.action_SecondFragment_to_FirstFragment)
+//            view?.findNavController()?.backStack(R.id.action_details_film_to_list_film)
         }
 
         viewModel.getDetailsFilm(args.id)
