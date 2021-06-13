@@ -1,13 +1,13 @@
-package com.example.desafiomobile.business.model
+package com.example.desafiomobile.data.db.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.google.gson.annotations.SerializedName
+import com.example.desafiomobile.business.model.Rating
 
-@Entity
+@Entity(tableName = "Film")
 data class FilmFavoriteEntity(
-    @PrimaryKey val uid: Int,
+    @PrimaryKey(autoGenerate = true) val id: Long,
     @ColumnInfo(name = "title") val title: String?,
     @ColumnInfo(name = "Year") val year: String?,
     @ColumnInfo(name = "Rated") val rated: String?,
@@ -31,6 +31,5 @@ data class FilmFavoriteEntity(
     @ColumnInfo(name = "BoxOffice") val boxOffice: String?,
     @ColumnInfo(name = "Production") val production: String?,
     @ColumnInfo(name = "Website") val website: String?,
-    @ColumnInfo(name = "Response") val response: String?,
-    @ColumnInfo(name = "Ratings") val ratings: List<Rating?>
+    @ColumnInfo(name = "Response") val response: String?
 )

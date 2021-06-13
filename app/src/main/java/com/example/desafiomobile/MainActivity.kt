@@ -1,12 +1,9 @@
 package com.example.desafiomobile
 
-import android.content.Context
 import android.os.Bundle
-import android.util.AttributeSet
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
@@ -18,7 +15,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        var inflater: MenuInflater= getMenuInflater()
+        var inflater: MenuInflater = getMenuInflater()
         inflater.inflate(R.menu.item_menu, menu)
         return super.onCreateOptionsMenu(menu)
     }

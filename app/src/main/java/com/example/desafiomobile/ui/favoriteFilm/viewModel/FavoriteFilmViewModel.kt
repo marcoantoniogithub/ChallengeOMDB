@@ -1,22 +1,34 @@
 package com.example.desafiomobile.ui.favoriteFilm.viewModel
 
+import android.content.ContentValues.TAG
+import android.util.Log
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import br.com.aaf.libraryCore.base.BaseViewModel
-import com.example.desafiomobile.business.model.FilmDTO
+import com.example.desafiomobile.data.db.entity.FilmFavoriteEntity
+import com.example.desafiomobile.data.db.repository.FilmFavoriteRepository
+import kotlinx.coroutines.launch
 
-class FavoriteFilmViewModel : BaseViewModel(), LifecycleObserver {
+class FavoriteFilmViewModel(
+    private val repository: FilmFavoriteRepository
+) : BaseViewModel(), LifecycleObserver {
 
-
-    var films: MutableLiveData<FilmDTO> = MutableLiveData()
+    var films: MutableLiveData<List<FilmFavoriteEntity>> = MutableLiveData()
 
     init {
-
+        getAllFilms()
     }
 
-    fun getAllFilms() {
-        print("")
-
+    fun getAllFilms() = viewModelScope.launch {
+        try {
+            val response = repository.getAllFilms()
+            response?.let {
+                films.postValue(it)
+            }
+        } catch (ex: Exception) {
+            Log.e(TAG, ex.toString())
+        }
     }
 
 }
