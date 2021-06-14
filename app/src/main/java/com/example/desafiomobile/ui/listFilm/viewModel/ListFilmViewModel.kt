@@ -4,7 +4,9 @@ import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.MutableLiveData
 import com.example.desafiomobile.util.base.BaseViewModel
 import com.example.desafiomobile.business.model.FilmDTO
+import com.example.desafiomobile.business.model.SimpleFilm
 import com.example.desafiomobile.business.repository.OmdbApi
+import io.reactivex.Completable.merge
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -17,24 +19,26 @@ class ListFilmViewModel() : BaseViewModel(), LifecycleObserver {
     var textTitle: MutableLiveData<String> = MutableLiveData()
     var msgError: MutableLiveData<String> = MutableLiveData()
     var closeKeyBoard: MutableLiveData<Boolean> = MutableLiveData()
-
-    init {
-    }
+    var page: Int = 0
 
     fun getAllFilms() {
-        closeKeyBoard.postValue(false)
         val retrofitClient = Retrofit.Builder()
             .baseUrl("http://www.omdbapi.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
         val endpoint = retrofitClient.create(OmdbApi::class.java)
-        endpoint.getFilmForTitle(textTitle.value ?: "", 1).enqueue(object : Callback<FilmDTO> {
+        endpoint.getFilmForTitle(textTitle.value ?: "", page).enqueue(object : Callback<FilmDTO> {
             override fun onResponse(call: Call<FilmDTO>, response: Response<FilmDTO>) {
                 if (response.body()?.search == null) {
                     msgError.postValue("Nâo foi Encontrado")
                 } else {
-                    films.postValue(response.body())
+                    if(page == 1){
+                        films.postValue(response.body())
+                    } else {
+                        val list :  List<SimpleFilm> = films.value!!.search.plus(response.body()!!.search)
+                        films.postValue(FilmDTO(search = list, response = films.value!!.response, totalResults = films.value!!.totalResults))
+                    }
                 }
             }
 
@@ -42,5 +46,16 @@ class ListFilmViewModel() : BaseViewModel(), LifecycleObserver {
                 println(t)
             }
         })
+    }
+
+    fun nextPage(){
+        page++
+        getAllFilms()
+    }
+
+    fun searchFilms(){
+        page = 1
+        closeKeyBoard.postValue(false)
+        getAllFilms()
     }
 }
