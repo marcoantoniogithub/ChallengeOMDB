@@ -8,5 +8,5 @@ interface FilmFavoriteRepository {
     suspend fun insertFilm(film: FilmFavoriteEntity): Long
     suspend fun deleteFilm(id: String)
     suspend fun getAllFilms(): List<FilmFavoriteEntity>?
-    suspend fun existFilm(id: String): LiveData<FilmFavoriteEntity>
+    suspend fun existFilm(id: String): FilmFavoriteEntity
 }

@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import androidx.room.ColumnInfo
 import br.com.aaf.libraryCore.base.BaseViewModel
 import com.example.desafiomobile.business.model.FilmDetailsDTO
 import com.example.desafiomobile.business.repository.OmdbApi
@@ -27,6 +28,7 @@ class DetailsFilmViewModel(
 
     init {
         getDetailsFilm()
+        getFilm()
     }
 
     fun getDetailsFilm() {
@@ -50,5 +52,65 @@ class DetailsFilmViewModel(
                 println(t)
             }
         })
+    }
+
+    fun getFilm() = viewModelScope.launch {
+        try {
+            val response = repository.existFilm(id)
+            response?.let {
+                favorite.postValue(true)
+            }. also { favorite.postValue(false) }
+        } catch (ex: Exception) {
+            Log.e(TAG, ex.toString())
+        }
+    }
+
+    fun delete() = viewModelScope.launch {
+        try {
+            val response = repository.deleteFilm(id)
+            response?.let {
+                favorite.postValue(false)
+            }. also { favorite.postValue(true) }
+        } catch (ex: Exception) {
+            Log.e(TAG, ex.toString())
+        }
+    }
+
+    fun add() = viewModelScope.launch {
+        try {
+            val response = repository.insertFilm(
+                FilmFavoriteEntity(
+                     title = null,
+                     year = null,
+                     rated = null,
+                     released = null,
+                     runtime = null,
+                     genre = null,
+                     director = null,
+                     writer = null,
+                     actors = null,
+                     plot = null,
+                     language = null,
+                     country = null,
+                     awards = null,
+                     poster = null,
+                     metascore = null,
+                     imdbRating = null,
+                     imdbVotes = null,
+                     imdbID = null,
+                     type = null,
+                     dvd = null,
+                     boxOffice = null,
+                     production = null,
+                     website = null,
+                     response = null
+                )
+            )
+            response?.let {
+                favorite.postValue(true)
+            }. also { favorite.postValue(false) }
+        } catch (ex: Exception) {
+            Log.e(TAG, ex.toString())
+        }
     }
 }

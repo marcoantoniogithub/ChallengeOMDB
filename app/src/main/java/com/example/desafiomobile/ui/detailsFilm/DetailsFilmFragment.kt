@@ -40,6 +40,7 @@ class DetailsFilmFragment : BaseFragment<FragmentDetailsFilmBinding>() {
     override fun initBinding() {
         binding.viewModel = viewModel
         this.lifecycle.addObserver(viewModel)
+        viewModel.id = args.id
 
         binding.buttonBack.setOnClickListener {
             view?.findNavController()?.popBackStack()
@@ -52,8 +53,6 @@ class DetailsFilmFragment : BaseFragment<FragmentDetailsFilmBinding>() {
                 viewModel.add()
             }
         }
-
-        viewModel.id = args.id
     }
 
     override fun onDestroy() {

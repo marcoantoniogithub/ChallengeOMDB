@@ -20,5 +20,5 @@ interface FilmFavoriteDAO {
 
 
     @Query("SELECT * FROM Film WHERE imdbID = :id")
-    fun exist(id: String): LiveData<FilmFavoriteEntity>
+    fun exist(id: String): FilmFavoriteEntity
 }

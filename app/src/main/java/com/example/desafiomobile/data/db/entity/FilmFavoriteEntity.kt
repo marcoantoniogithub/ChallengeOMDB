@@ -7,7 +7,7 @@ import com.example.desafiomobile.business.model.Rating
 
 @Entity(tableName = "Film")
 data class FilmFavoriteEntity(
-    @PrimaryKey(autoGenerate = true) val id: Long,
+    @PrimaryKey(autoGenerate = true) val id: Long = 0,
     @ColumnInfo(name = "title") val title: String?,
     @ColumnInfo(name = "Year") val year: String?,
     @ColumnInfo(name = "Rated") val rated: String?,

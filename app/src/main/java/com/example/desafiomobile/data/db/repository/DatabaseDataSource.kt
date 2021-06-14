@@ -19,7 +19,7 @@ class DatabaseDataSource(
         return filmFavoriteDAO.getAll()
     }
 
-    override suspend fun existFilm(id: String): LiveData<FilmFavoriteEntity> {
+    override suspend fun existFilm(id: String): FilmFavoriteEntity {
         return filmFavoriteDAO.exist(id)
     }
 }
