@@ -5,7 +5,9 @@ import android.util.Log
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.findNavController
 import br.com.aaf.libraryCore.base.BaseViewModel
+import com.example.desafiomobile.R
 import com.example.desafiomobile.data.db.entity.FilmFavoriteEntity
 import com.example.desafiomobile.data.db.repository.FilmFavoriteRepository
 import kotlinx.coroutines.launch
@@ -30,5 +32,4 @@ class FavoriteFilmViewModel(
             Log.e(TAG, ex.toString())
         }
     }
-
 }

@@ -13,8 +13,12 @@ interface FilmFavoriteDAO {
     fun getAll(): List<FilmFavoriteEntity>
 
     @Insert
-    suspend fun insert(subscriber: FilmFavoriteEntity) :Long
+    suspend fun insert(subscriber: FilmFavoriteEntity): Long
 
     @Query("DELETE FROM Film WHERE imdbID = :id")
     fun delete(id: String)
+
+
+    @Query("SELECT * FROM Film WHERE imdbID = :id")
+    fun exist(id: String): LiveData<FilmFavoriteEntity>
 }

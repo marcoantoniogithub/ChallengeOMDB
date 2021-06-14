@@ -4,182 +4,199 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <import type="android.view.View" />
+
         <variable
             name="viewModel"
             type="com.example.desafiomobile.ui.detailsFilm.viewModel.DetailsFilmViewModel" />
     </data>
 
-    <ScrollView
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:context=".ui.detailsFilm.DetailsFilmFragment">
+            android:layout_height="match_parent">
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/margin_start"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_begin="@dimen/margin_medium" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/margin_end"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_end="@dimen/margin_medium" />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/img_id"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:layout_marginTop="@dimen/margin_large"
-                android:src="@drawable/ic_launcher_background"
-                app:layout_constraintEnd_toEndOf="@id/margin_end"
-                app:layout_constraintStart_toStartOf="@+id/margin_start"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/title"
-                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_large"
-                android:gravity="center"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/text_extreme"
-                app:layout_constraintEnd_toEndOf="@id/margin_end"
-                app:layout_constraintStart_toStartOf="@+id/margin_start"
-                app:layout_constraintTop_toBottomOf="@id/img_id" />
+                tools:context=".ui.detailsFilm.DetailsFilmFragment">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/title_year"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_large"
-                android:text="@string/year"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/text_large"
-                app:layout_constraintEnd_toStartOf="@id/year"
-                app:layout_constraintStart_toStartOf="@+id/margin_start"
-                app:layout_constraintTop_toBottomOf="@id/title" />
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/margin_start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="@dimen/margin_medium" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/year"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_small"
-                android:textSize="@dimen/text_large"
-                app:layout_constraintBottom_toBottomOf="@+id/title_year"
-                app:layout_constraintEnd_toEndOf="@id/margin_end"
-                app:layout_constraintStart_toEndOf="@+id/title_year"
-                app:layout_constraintTop_toTopOf="@id/title_year" />
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/margin_end"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_end="@dimen/margin_medium" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/title_released"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_large"
-                android:text="@string/released"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/text_large"
-                app:layout_constraintEnd_toStartOf="@id/released"
-                app:layout_constraintStart_toStartOf="@+id/margin_start"
-                app:layout_constraintTop_toBottomOf="@id/title_year" />
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/img_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_marginTop="@dimen/margin_large"
+                    android:src="@drawable/ic_launcher_background"
+                    app:layout_constraintEnd_toEndOf="@id/margin_end"
+                    app:layout_constraintStart_toStartOf="@+id/margin_start"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/released"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_small"
-                android:textSize="@dimen/text_large"
-                app:layout_constraintBottom_toBottomOf="@+id/title_released"
-                app:layout_constraintEnd_toEndOf="@id/margin_end"
-                app:layout_constraintStart_toEndOf="@+id/title_released"
-                app:layout_constraintTop_toTopOf="@id/title_released" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_large"
+                    android:gravity="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/text_extreme"
+                    app:layout_constraintEnd_toEndOf="@id/margin_end"
+                    app:layout_constraintStart_toStartOf="@+id/margin_start"
+                    app:layout_constraintTop_toBottomOf="@id/img_id" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/title_genre"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_large"
-                android:text="@string/genre"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/text_large"
-                app:layout_constraintEnd_toStartOf="@id/genre"
-                app:layout_constraintStart_toStartOf="@+id/margin_start"
-                app:layout_constraintTop_toBottomOf="@id/title_released" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/title_year"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_large"
+                    android:text="@string/year"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/text_large"
+                    app:layout_constraintEnd_toStartOf="@id/year"
+                    app:layout_constraintStart_toStartOf="@+id/margin_start"
+                    app:layout_constraintTop_toBottomOf="@id/title" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/genre"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_small"
-                android:textSize="@dimen/text_large"
-                app:layout_constraintBottom_toBottomOf="@+id/title_genre"
-                app:layout_constraintEnd_toEndOf="@id/margin_end"
-                app:layout_constraintStart_toEndOf="@+id/title_genre"
-                app:layout_constraintTop_toTopOf="@id/title_genre" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/year"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_small"
+                    android:textSize="@dimen/text_large"
+                    app:layout_constraintBottom_toBottomOf="@+id/title_year"
+                    app:layout_constraintEnd_toEndOf="@id/margin_end"
+                    app:layout_constraintStart_toEndOf="@+id/title_year"
+                    app:layout_constraintTop_toTopOf="@id/title_year" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/title_rating"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_large"
-                android:text="@string/rating"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/text_large"
-                app:layout_constraintEnd_toStartOf="@id/rating"
-                app:layout_constraintStart_toStartOf="@+id/margin_start"
-                app:layout_constraintTop_toBottomOf="@id/title_genre" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/title_released"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_large"
+                    android:text="@string/released"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/text_large"
+                    app:layout_constraintEnd_toStartOf="@id/released"
+                    app:layout_constraintStart_toStartOf="@+id/margin_start"
+                    app:layout_constraintTop_toBottomOf="@id/title_year" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/rating"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_small"
-                android:textSize="@dimen/text_large"
-                app:layout_constraintBottom_toBottomOf="@+id/title_rating"
-                app:layout_constraintEnd_toEndOf="@id/margin_end"
-                app:layout_constraintStart_toEndOf="@+id/title_rating"
-                app:layout_constraintTop_toTopOf="@id/title_rating" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/released"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_small"
+                    android:textSize="@dimen/text_large"
+                    app:layout_constraintBottom_toBottomOf="@+id/title_released"
+                    app:layout_constraintEnd_toEndOf="@id/margin_end"
+                    app:layout_constraintStart_toEndOf="@+id/title_released"
+                    app:layout_constraintTop_toTopOf="@id/title_released" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/title_plot"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_large"
-                android:text="@string/plot"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/text_large"
-                app:layout_constraintStart_toStartOf="@+id/margin_start"
-                app:layout_constraintTop_toBottomOf="@id/title_rating" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/title_genre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_large"
+                    android:text="@string/genre"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/text_large"
+                    app:layout_constraintEnd_toStartOf="@id/genre"
+                    app:layout_constraintStart_toStartOf="@+id/margin_start"
+                    app:layout_constraintTop_toBottomOf="@id/title_released" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/plot"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_small"
-                android:layout_marginBottom="@dimen/margin_large"
-                android:textSize="@dimen/text_large"
-                app:layout_constraintBottom_toTopOf="@id/button_back"
-                app:layout_constraintEnd_toEndOf="@id/margin_end"
-                app:layout_constraintStart_toEndOf="@+id/margin_start"
-                app:layout_constraintTop_toBottomOf="@+id/title_plot"
-                app:layout_constraintVertical_bias="0.0" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/genre"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_small"
+                    android:textSize="@dimen/text_large"
+                    app:layout_constraintBottom_toBottomOf="@+id/title_genre"
+                    app:layout_constraintEnd_toEndOf="@id/margin_end"
+                    app:layout_constraintStart_toEndOf="@+id/title_genre"
+                    app:layout_constraintTop_toTopOf="@id/title_genre" />
 
-            <Button
-                android:id="@+id/button_back"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/margin_medium"
-                android:text="@string/back"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@id/margin_end"
-                app:layout_constraintStart_toStartOf="@+id/margin_start" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/title_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_large"
+                    android:text="@string/rating"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/text_large"
+                    app:layout_constraintEnd_toStartOf="@id/rating"
+                    app:layout_constraintStart_toStartOf="@+id/margin_start"
+                    app:layout_constraintTop_toBottomOf="@id/title_genre" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/rating"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_small"
+                    android:textSize="@dimen/text_large"
+                    app:layout_constraintBottom_toBottomOf="@+id/title_rating"
+                    app:layout_constraintEnd_toEndOf="@id/margin_end"
+                    app:layout_constraintStart_toEndOf="@+id/title_rating"
+                    app:layout_constraintTop_toTopOf="@id/title_rating" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/title_plot"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_large"
+                    android:text="@string/plot"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/text_large"
+                    app:layout_constraintStart_toStartOf="@+id/margin_start"
+                    app:layout_constraintTop_toBottomOf="@id/title_rating" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/plot"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:layout_marginBottom="@dimen/margin_large"
+                    android:textSize="@dimen/text_large"
+                    app:layout_constraintBottom_toTopOf="@id/button_back"
+                    app:layout_constraintEnd_toEndOf="@id/margin_end"
+                    app:layout_constraintStart_toEndOf="@+id/margin_start"
+                    app:layout_constraintTop_toBottomOf="@+id/title_plot"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <Button
+                    android:id="@+id/button_back"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_medium"
+                    android:text="@string/back"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/margin_end"
+                    app:layout_constraintStart_toStartOf="@+id/margin_start" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/btn_star"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/margin_large"
+            android:backgroundTint="@color/blue"
+            app:icon="@drawable/ic_baseline_star_24"
+            android:text="favorite" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

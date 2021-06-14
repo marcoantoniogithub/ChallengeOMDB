@@ -16,6 +16,7 @@ import com.example.desafiomobile.data.db.repository.FilmFavoriteRepository
 import com.example.desafiomobile.databinding.FragmentFavoriteFilmBinding
 import com.example.desafiomobile.ui.favoriteFilm.viewModel.FavoriteFilmViewModel
 import com.example.desafiomobile.util.adapter.ListAdapter
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class FavoriteFilmFragment : BaseFragment<FragmentFavoriteFilmBinding>() {
 
@@ -48,6 +49,10 @@ class FavoriteFilmFragment : BaseFragment<FragmentFavoriteFilmBinding>() {
         }
 
         binding.listFilmFavoriteRecycleview.adapter = filmsAdapter
+
+        binding.sum.setOnClickListener {
+            view?.findNavController()?.navigate(R.id.action_favorite_film_to_list_film)
+        }
     }
 
     private fun navigationForDetails(

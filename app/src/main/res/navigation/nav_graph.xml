@@ -16,7 +16,7 @@
 
         <action
             android:id="@+id/action_favorite_film_to_list_film"
-            app:destination="@id/DetailsFilmFragment" />
+            app:destination="@id/ListFilmFragment" />
     </fragment>
 
     <fragment
