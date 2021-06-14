@@ -23,15 +23,9 @@ class DetailsFilmViewModel(
 ) : BaseViewModel(), LifecycleObserver {
 
     var dto: MutableLiveData<FilmDetailsDTO> = MutableLiveData()
-    var id: String = ""
     var favorite: MutableLiveData<Boolean> = MutableLiveData()
 
-    init {
-        getDetailsFilm()
-        getFilm()
-    }
-
-    fun getDetailsFilm() {
+    fun getDetailsFilm(id : String) {
         val retrofitClient = Retrofit.Builder()
             .baseUrl("http://www.omdbapi.com/")
             .addConverterFactory(GsonConverterFactory.create())
@@ -39,7 +33,6 @@ class DetailsFilmViewModel(
 
         val endpoint = retrofitClient.create(OmdbApi::class.java)
 
-        println(endpoint)
         endpoint.getFilmForId(id).enqueue(object : Callback<FilmDetailsDTO> {
             override fun onResponse(
                 call: Call<FilmDetailsDTO>,
@@ -54,61 +47,70 @@ class DetailsFilmViewModel(
         })
     }
 
-    fun getFilm() = viewModelScope.launch {
+    fun getFilm(id: String) = viewModelScope.launch {
         try {
             val response = repository.existFilm(id)
-            response?.let {
+            if(response == null){
+                favorite.postValue(false)
+            }
+            else {
                 favorite.postValue(true)
-            }. also { favorite.postValue(false) }
+            }
         } catch (ex: Exception) {
             Log.e(TAG, ex.toString())
         }
     }
 
-    fun delete() = viewModelScope.launch {
+    fun delete(id: String) = viewModelScope.launch {
         try {
             val response = repository.deleteFilm(id)
-            response?.let {
+            if(response == null){
+                favorite.postValue(true)
+            }
+            else {
                 favorite.postValue(false)
-            }. also { favorite.postValue(true) }
+            }
         } catch (ex: Exception) {
             Log.e(TAG, ex.toString())
         }
     }
 
-    fun add() = viewModelScope.launch {
+    fun add(id: String) = viewModelScope.launch {
         try {
             val response = repository.insertFilm(
                 FilmFavoriteEntity(
-                     title = null,
-                     year = null,
-                     rated = null,
-                     released = null,
-                     runtime = null,
-                     genre = null,
-                     director = null,
-                     writer = null,
-                     actors = null,
-                     plot = null,
-                     language = null,
-                     country = null,
-                     awards = null,
-                     poster = null,
-                     metascore = null,
-                     imdbRating = null,
-                     imdbVotes = null,
-                     imdbID = null,
-                     type = null,
-                     dvd = null,
-                     boxOffice = null,
-                     production = null,
-                     website = null,
-                     response = null
+                     title = dto.value?.title,
+                     year = dto.value?.year,
+                     rated = dto.value?.rated,
+                     released = dto.value?.released,
+                     runtime = dto.value?.runtime,
+                     genre = dto.value?.genre,
+                     director = dto.value?.director,
+                     writer = dto.value?.writer,
+                     actors = dto.value?.actors,
+                     plot = dto.value?.plot,
+                     language = dto.value?.language,
+                     country = dto.value?.country,
+                     awards = dto.value?.awards,
+                     poster = dto.value?.poster,
+                     metascore = dto.value?.metascore,
+                     imdbRating = dto.value?.imdbRating,
+                     imdbVotes = dto.value?.imdbVotes,
+                     imdbID = dto.value?.imdbID,
+                     type = dto.value?.type,
+                     dvd = dto.value?.dvd,
+                     boxOffice = dto.value?.boxOffice,
+                     production = dto.value?.production,
+                     website = dto.value?.website,
+                     response = dto.value?.response
                 )
             )
-            response?.let {
+            if(response == null){
+                favorite.postValue(false)
+            }
+            else {
                 favorite.postValue(true)
-            }. also { favorite.postValue(false) }
+            }
         } catch (ex: Exception) {
             Log.e(TAG, ex.toString())
         }

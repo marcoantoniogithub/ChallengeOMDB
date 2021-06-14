@@ -1,5 +1,8 @@
 package com.example.desafiomobile.ui.detailsFilm
 
+import android.graphics.Color
+import android.view.View.INVISIBLE
+import android.view.View.VISIBLE
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -40,7 +43,8 @@ class DetailsFilmFragment : BaseFragment<FragmentDetailsFilmBinding>() {
     override fun initBinding() {
         binding.viewModel = viewModel
         this.lifecycle.addObserver(viewModel)
-        viewModel.id = args.id
+        viewModel.getDetailsFilm(args.id)
+        viewModel.getFilm(args.id)
 
         binding.buttonBack.setOnClickListener {
             view?.findNavController()?.popBackStack()
@@ -48,9 +52,9 @@ class DetailsFilmFragment : BaseFragment<FragmentDetailsFilmBinding>() {
 
         binding.btnStar.setOnClickListener {
             if(viewModel.favorite.value!!){
-                viewModel.delete()
+                viewModel.delete(args.id)
             } else {
-                viewModel.add()
+                viewModel.add(args.id)
             }
         }
     }
@@ -72,6 +76,14 @@ class DetailsFilmFragment : BaseFragment<FragmentDetailsFilmBinding>() {
             binding.genre.text = it.genre
             binding.rating.text = if(it.ratings.size>0)it.ratings[0].value else "Not Found"
             binding.plot.text = it.plot
+        }
+
+        viewModel.favorite.observe(viewLifecycleOwner) {
+            if(it){
+                binding.btnStar.visibility = INVISIBLE
+            } else {
+                binding.btnStar.visibility = VISIBLE
+            }
         }
     }
 }

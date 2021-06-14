@@ -19,7 +19,7 @@ class FavoriteFilmViewModel(
     var films: MutableLiveData<List<FilmFavoriteEntity>> = MutableLiveData()
 
     init {
-        getAllFilms()
+
     }
 
     fun getAllFilms() = viewModelScope.launch {

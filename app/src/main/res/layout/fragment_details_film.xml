@@ -193,10 +193,9 @@
             android:id="@+id/btn_star"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
+            android:layout_gravity="top|end"
             android:layout_margin="@dimen/margin_large"
             android:backgroundTint="@color/blue"
-            app:icon="@drawable/ic_baseline_star_24"
-            android:text="favorite" />
+            app:icon="@drawable/ic_baseline_star_24" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

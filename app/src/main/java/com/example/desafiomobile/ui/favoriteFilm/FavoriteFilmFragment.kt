@@ -65,7 +65,7 @@ class FavoriteFilmFragment : BaseFragment<FragmentFavoriteFilmBinding>() {
 
     override fun onResume() {
         super.onResume()
-        filmsAdapter.notifyDataSetChanged()
+        viewModel.getAllFilms()
     }
 
     override fun observers() {
