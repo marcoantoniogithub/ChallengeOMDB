@@ -1,9 +1,8 @@
-package br.com.aaf.libraryCore.base
+package com.example.desafiomobile.util.base
 
 import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import io.reactivex.schedulers.TestScheduler
 
 
 interface BaseSchedulerProvider {

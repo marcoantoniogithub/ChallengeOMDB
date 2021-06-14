@@ -6,7 +6,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.lifecycle.observe
 import androidx.navigation.findNavController
-import br.com.aaf.libraryCore.base.BaseFragment
+import com.example.desafiomobile.util.base.BaseFragment
 import com.example.desafiomobile.R
 import com.example.desafiomobile.business.model.SimpleFilm
 import com.example.desafiomobile.databinding.FragmentListFilmBinding
@@ -34,6 +34,10 @@ class ListFilmFragment : BaseFragment<FragmentListFilmBinding>() {
         }
 
         binding.listFilmRecycleview.adapter = filmsAdapter
+
+        binding.buttonBack.setOnClickListener {
+            view?.findNavController()?.popBackStack()
+        }
     }
 
     private fun navigationForDetails(

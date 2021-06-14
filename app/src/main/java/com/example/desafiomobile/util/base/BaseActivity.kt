@@ -1,4 +1,4 @@
-package br.com.aaf.libraryCore.base
+package com.example.desafiomobile.util.base
 
 import android.os.Build
 import android.os.Bundle

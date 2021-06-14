@@ -1,16 +1,14 @@
 package com.example.desafiomobile.ui.detailsFilm
 
 import android.graphics.Color
-import android.view.View.INVISIBLE
-import android.view.View.VISIBLE
+import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
-import br.com.aaf.libraryCore.base.BaseFragment
-import br.com.aaf.libraryCore.base.BaseViewModel
 import com.example.desafiomobile.R
 import com.example.desafiomobile.data.db.AppDatabase
 import com.example.desafiomobile.data.db.dao.FilmFavoriteDAO
@@ -18,7 +16,8 @@ import com.example.desafiomobile.data.db.repository.DatabaseDataSource
 import com.example.desafiomobile.data.db.repository.FilmFavoriteRepository
 import com.example.desafiomobile.databinding.FragmentDetailsFilmBinding
 import com.example.desafiomobile.ui.detailsFilm.viewModel.DetailsFilmViewModel
-import com.example.desafiomobile.ui.favoriteFilm.viewModel.FavoriteFilmViewModel
+import com.example.desafiomobile.util.base.BaseFragment
+import com.example.desafiomobile.util.base.BaseViewModel
 import com.squareup.picasso.Picasso
 
 class DetailsFilmFragment : BaseFragment<FragmentDetailsFilmBinding>() {
@@ -38,7 +37,7 @@ class DetailsFilmFragment : BaseFragment<FragmentDetailsFilmBinding>() {
     val args: DetailsFilmFragmentArgs by navArgs()
 
     override fun getLayout() = R.layout.fragment_details_film
-    override fun getViewModel() : BaseViewModel = viewModel
+    override fun getViewModel(): BaseViewModel = viewModel
 
     override fun initBinding() {
         binding.viewModel = viewModel
@@ -51,12 +50,13 @@ class DetailsFilmFragment : BaseFragment<FragmentDetailsFilmBinding>() {
         }
 
         binding.btnStar.setOnClickListener {
-            if(viewModel.favorite.value!!){
+            if (viewModel.favorite.value!!) {
                 viewModel.delete(args.id)
             } else {
                 viewModel.add(args.id)
             }
         }
+
     }
 
     override fun onDestroy() {
@@ -64,7 +64,8 @@ class DetailsFilmFragment : BaseFragment<FragmentDetailsFilmBinding>() {
     }
 
     override fun observers() {
-        viewModel.dto.observe( viewLifecycleOwner) {
+
+        viewModel.dto.observe(viewLifecycleOwner) {
             Picasso.get()
                 .load(it.poster)
                 .error(R.drawable.ic_baseline_image_not_supported_24)
@@ -74,15 +75,15 @@ class DetailsFilmFragment : BaseFragment<FragmentDetailsFilmBinding>() {
             binding.year.text = it.year
             binding.released.text = it.released
             binding.genre.text = it.genre
-            binding.rating.text = if(it.ratings.size>0)it.ratings[0].value else "Not Found"
+            binding.rating.text = if (it.ratings.size > 0) it.ratings[0].value else "Not Found"
             binding.plot.text = it.plot
         }
 
         viewModel.favorite.observe(viewLifecycleOwner) {
-            if(it){
-                binding.btnStar.visibility = INVISIBLE
+            if (it) {
+                binding.btnStar.setBackgroundColor(Color.parseColor("#F9FF13"))
             } else {
-                binding.btnStar.visibility = VISIBLE
+                binding.btnStar.setBackgroundColor(Color.parseColor("#AAAAAA"))
             }
         }
     }

@@ -1,4 +1,4 @@
-package br.com.aaf.libraryCore.base
+package com.example.desafiomobile.util.base
 
 import androidx.lifecycle.ViewModel
 import io.reactivex.disposables.CompositeDisposable

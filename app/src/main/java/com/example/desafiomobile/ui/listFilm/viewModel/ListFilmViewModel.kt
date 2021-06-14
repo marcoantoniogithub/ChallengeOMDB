@@ -2,7 +2,7 @@ package com.example.desafiomobile.ui.listFilm.viewModel
 
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.MutableLiveData
-import br.com.aaf.libraryCore.base.BaseViewModel
+import com.example.desafiomobile.util.base.BaseViewModel
 import com.example.desafiomobile.business.model.FilmDTO
 import com.example.desafiomobile.business.repository.OmdbApi
 import retrofit2.Call

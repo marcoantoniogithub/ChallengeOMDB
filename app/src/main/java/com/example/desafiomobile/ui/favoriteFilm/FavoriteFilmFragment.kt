@@ -5,8 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.navigation.findNavController
-import br.com.aaf.libraryCore.base.BaseFragment
-import br.com.aaf.libraryCore.base.BaseViewModel
+import com.example.desafiomobile.util.base.BaseFragment
+import com.example.desafiomobile.util.base.BaseViewModel
 import com.example.desafiomobile.R
 import com.example.desafiomobile.business.model.SimpleFilm
 import com.example.desafiomobile.data.db.AppDatabase
@@ -16,7 +16,6 @@ import com.example.desafiomobile.data.db.repository.FilmFavoriteRepository
 import com.example.desafiomobile.databinding.FragmentFavoriteFilmBinding
 import com.example.desafiomobile.ui.favoriteFilm.viewModel.FavoriteFilmViewModel
 import com.example.desafiomobile.util.adapter.ListAdapter
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class FavoriteFilmFragment : BaseFragment<FragmentFavoriteFilmBinding>() {
 

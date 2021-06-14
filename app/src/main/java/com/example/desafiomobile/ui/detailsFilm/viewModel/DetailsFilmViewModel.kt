@@ -5,8 +5,7 @@ import android.util.Log
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import androidx.room.ColumnInfo
-import br.com.aaf.libraryCore.base.BaseViewModel
+import com.example.desafiomobile.util.base.BaseViewModel
 import com.example.desafiomobile.business.model.FilmDetailsDTO
 import com.example.desafiomobile.business.repository.OmdbApi
 import com.example.desafiomobile.data.db.entity.FilmFavoriteEntity
