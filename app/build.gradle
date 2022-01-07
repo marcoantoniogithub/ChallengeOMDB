@@ -65,7 +65,7 @@ repositories {
 }
 
 dependencies {
-//    def koin_version = "2.2.1"
+    def koin_version = "2.2.1"
 
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
@@ -94,9 +94,9 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxkotlin:2.4.0'
 
     //koin
-//    implementation "org.koin:koin-android:$koin_version"
-//    implementation "org.koin:koin-androidx-scope:$koin_version"
-//    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+    implementation "org.koin:koin-android:$koin_version"
+    implementation "org.koin:koin-androidx-scope:$koin_version"
+    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
 
     //Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:2.3.5"

@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.desafiomobile.ui.listFilm.viewModel.ListFilmViewModel" />
+            type="com.example.desafiomobile.features.listFilm.presentation.ListFilmViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

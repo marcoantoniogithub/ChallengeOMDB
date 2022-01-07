@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.desafiomobile.ui.favoriteFilm.viewModel.FavoriteFilmViewModel" />
+            type="com.example.desafiomobile.features.favoriteFilm.presentation.FavoriteFilmViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
