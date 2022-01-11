@@ -5,11 +5,9 @@
 
     <data>
 
-        <import type="android.view.View" />
-
         <variable
             name="viewModel"
-            type="com.example.desafiomobile.ui.listFilm.viewModel.ListFilmViewModel" />
+            type="com.example.desafiomobile.ui.listFilm.presentation.ListFilmViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -22,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_medium"
             android:padding="10dp"
-            android:text="@={viewModel.textTitle}"
+            android:text="@{viewModel.searchText}"
             android:textColor="@android:color/darker_gray"
             android:textSize="20sp"
             app:layout_constraintEnd_toStartOf="@id/btn_search"
@@ -34,31 +32,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_medium"
-            android:onClick="@{() -> viewModel.searchFilms()}"
+            android:onClick="@{() -> viewModel.loadMovies()}"
             android:text="@string/search"
             app:layout_constraintBottom_toBottomOf="@id/search"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/search"
             app:layout_constraintTop_toTopOf="@id/search" />
 
-        <androidx.core.widget.NestedScrollView
-            android:id="@+id/id_nested"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list_film_recycleview"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@id/button_back"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/search">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/list_film_recycleview"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:spanCount="2"
-                tools:listitem="@layout/item_list" />
-
-        </androidx.core.widget.NestedScrollView>
+            tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toTopOf="@+id/button_back"
+            app:layout_constraintTop_toBottomOf="@id/btn_search"
+            app:spanCount="2"
+            tools:listitem="@layout/item_list" />
 
         <Button
             android:id="@+id/button_back"
@@ -68,8 +57,6 @@
             android:text="@string/back"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/id_nested" />
-
+            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

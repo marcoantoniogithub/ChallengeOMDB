@@ -21,7 +21,7 @@
 
     <fragment
         android:id="@+id/ListFilmFragment"
-        android:name="com.example.desafiomobile.ui.listFilm.ListFilmFragment"
+        android:name="com.example.desafiomobile.ui.listFilm.presentation.ListFilmFragment"
         tools:layout="@layout/fragment_list_film">
 
         <action

@@ -24,7 +24,7 @@ class DetailsFilmFragment : BaseFragment<FragmentDetailsFilmBinding>() {
 
     private val viewModel: DetailsFilmViewModel by viewModels {
         object : ViewModelProvider.Factory {
-            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
                 val subscriberDAO: FilmFavoriteDAO =
                     AppDatabase.getInstance(requireContext()).FilmFavoriteDAO
 
