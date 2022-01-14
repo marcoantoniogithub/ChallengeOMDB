@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/FavoriteFilmFragment"
-        android:name="com.example.desafiomobile.ui.favoriteFilm.FavoriteFilmFragment"
+        android:name="com.example.desafiomobile.ui.favoriteMoviesList.presentation.ListFavoriteMovieFragment"
         tools:layout="@layout/fragment_favorite_film">
 
         <action
@@ -21,7 +21,7 @@
 
     <fragment
         android:id="@+id/ListFilmFragment"
-        android:name="com.example.desafiomobile.ui.listFilm.presentation.ListFilmFragment"
+        android:name="com.example.desafiomobile.ui.searchedMoviesList.presentation.ListMovieFragment"
         tools:layout="@layout/fragment_list_film">
 
         <action
@@ -31,7 +31,7 @@
 
     <fragment
         android:id="@+id/DetailsFilmFragment"
-        android:name="com.example.desafiomobile.ui.detailsFilm.DetailsFilmFragment"
+        android:name="com.example.desafiomobile.ui.detailsMovie.presentation.DetailsMovieFragment"
         tools:layout="@layout/fragment_details_film">
         <argument
             android:name="id"

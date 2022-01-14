@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.desafiomobile.ui.detailsFilm.viewModel.DetailsFilmViewModel" />
+            type="com.example.desafiomobile.ui.detailsMovie.presentation.DetailsMovieViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -21,7 +21,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:context=".ui.detailsFilm.DetailsFilmFragment">
+                tools:context=".ui.detailsMovie.presentation.DetailsMovieFragment">
 
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/margin_start"
